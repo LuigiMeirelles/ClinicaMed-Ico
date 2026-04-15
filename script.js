@@ -8,6 +8,14 @@ menuToggle.addEventListener('click', () => {
   navegacao.classList.toggle('ativa');
 });
 
+document.querySelectorAll('.navegacao a').forEach((link) => {
+  link.addEventListener('click', () => {
+    if (navegacao.classList.contains('ativa')) {
+      navegacao.classList.remove('ativa');
+    }
+  });
+});
+
 document.addEventListener('pointermove', (event) => {
   const x = (event.clientX / window.innerWidth) * 100;
   const y = (event.clientY / window.innerHeight) * 100;

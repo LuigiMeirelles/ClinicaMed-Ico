@@ -115,7 +115,7 @@ button, .botao {
   z-index: 2;
 }
 .secao {
-  padding: 70px 0;
+  padding: clamp(48px, 5vw, 80px) 0;
 }
 .destaque {
   background: rgba(8, 18, 40, 0.92);
@@ -124,6 +124,29 @@ button, .botao {
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
+}
+.destaque .container {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1fr);
+  align-items: center;
+  gap: 48px;
+}
+.imagem-destaque {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imagem-destaque img {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 32px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+.imagem-destaque img:hover,
+.imagem-destaque img:focus-visible {
+  transform: scale(1.02);
+  filter: saturate(1.05);
 }
 .destaque::before {
   content: '';
@@ -314,12 +337,44 @@ textarea:focus-visible,
   outline: 2px solid rgba(57, 199, 255, 0.5);
   outline-offset: 4px;
 }
+@media (max-width: 1120px) {
+  .container {
+    width: min(960px, 100% - 32px);
+  }
+  .grade-cards,
+  .grade-servicos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 @media (max-width: 900px) {
+  .destaque .container,
   .grid-duplo {
     grid-template-columns: 1fr;
   }
-  .grade-cards {
+  .grade-cards,
+  .grade-servicos {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .topo {
+    padding: 18px 24px;
+  }
+  .marca {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 780px) {
+  .grade-cards,
+  .grade-servicos {
+    grid-template-columns: 1fr;
+  }
+  .botoes-principais {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .botao,
+  .botao-whatsapp {
+    width: 100%;
+    justify-content: center;
   }
 }
 @media (max-width: 680px) {
@@ -335,12 +390,39 @@ textarea:focus-visible,
     flex-direction: column;
     gap: 12px;
     display: none;
+    background: rgba(4, 10, 24, 0.95);
+    border-radius: 20px;
+    padding: 18px 16px;
+    backdrop-filter: blur(12px);
   }
   .navegacao.ativa {
     display: flex;
   }
-  .grade-cards,
-  .grade-servicos {
-    grid-template-columns: 1fr;
+  .navegacao a {
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .grid-duplo {
+    gap: 28px;
+  }
+  .titulo-secao h2 {
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+  }
+}
+@media (max-width: 520px) {
+  .topo {
+    padding: 16px 18px;
+  }
+  .destaque {
+    border-radius: 24px;
+  }
+  .botao,
+  .botao-whatsapp {
+    padding: 14px 18px;
+  }
+  .form-contato input,
+  .form-contato textarea {
+    padding: 14px;
   }
 }
