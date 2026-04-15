@@ -18,12 +18,21 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top left, rgba(57, 199, 255, 0.14), transparent 20%),
-              radial-gradient(circle at bottom right, rgba(45, 226, 196, 0.1), transparent 18%),
-              linear-gradient(180deg, #050a1d 0%, #08132d 55%, #03101f 100%);
+  background: radial-gradient(circle at top left, rgba(57, 199, 255, 0.08), transparent 18%),
+              radial-gradient(circle at bottom right, rgba(45, 226, 196, 0.05), transparent 16%),
+              linear-gradient(180deg, #061224 0%, #09132d 52%, #04101d 100%);
   color: var(--text-muted);
   position: relative;
   overflow-x: hidden;
+  opacity: 1;
+  transition: background 1.3s ease;
+}
+
+body.loaded {
+  opacity: 1;
+  background: radial-gradient(circle at top left, rgba(57, 199, 255, 0.16), transparent 18%),
+              radial-gradient(circle at bottom right, rgba(45, 226, 196, 0.12), transparent 16%),
+              linear-gradient(180deg, #050a1d 0%, #08132d 55%, #03101f 100%);
 }
 body::before {
   content: '';
