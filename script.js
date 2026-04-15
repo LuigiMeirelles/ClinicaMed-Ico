@@ -23,6 +23,24 @@ document.addEventListener('pointermove', (event) => {
   root.style.setProperty('--cursor-y', `${y}%`);
 });
 
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.2,
+  rootMargin: '0px 0px -10% 0px',
+});
+
+const revealTargets = document.querySelectorAll('.reveal');
+revealTargets.forEach((target) => revealObserver.observe(target));
+
+const autoRevealTargets = document.querySelectorAll('.destaque, .titulo-secao, .card, .card-servico, .imagem-destaque, .form-contato, .rodape');
+autoRevealTargets.forEach((target) => target.classList.add('reveal'));
+
 const interactiveElements = document.querySelectorAll('.botao, .botao-whatsapp, .navegacao a, .card, .card-servico, input, textarea');
 interactiveElements.forEach((element) => {
   element.addEventListener('pointerenter', () => {

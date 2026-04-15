@@ -45,6 +45,23 @@ body::after {
   transition: background-position 0.15s ease;
   z-index: 1;
 }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-slow {
+  transition-duration: 1s;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -196,6 +213,18 @@ button, .botao {
 .botao-primario {
   background: linear-gradient(135deg, #2fd6ff, #399cff);
   color: #03101f;
+}
+
+.destaque.reveal,
+.titulo-secao.reveal,
+.card.reveal,
+.card-servico.reveal,
+.imagem-destaque.reveal,
+.botao.reveal,
+.form-contato.reveal,
+.rodape.reveal {
+  opacity: 0;
+  transform: translateY(28px);
 }
 .botao-secundario {
   background: rgba(255, 255, 255, 0.08);
